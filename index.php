@@ -44,5 +44,7 @@ if ($pos  === false ) {
   }
 }
 
+echo '<hr />Count the number of words in $date and print out the result: </br></br>';
+print (str_word_count($date, 0));
 
 ?>
