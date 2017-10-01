@@ -47,4 +47,8 @@ if ($pos  === false ) {
 echo '<hr />Count the number of words in $date and print out the result: </br></br>';
 print (str_word_count($date, 0));
 
+echo '<hr />Return the length of a string and print out the result: </br></br>';
+echo 'I would like to print the length of $date: ';
+print strlen($date);
+
 ?>
