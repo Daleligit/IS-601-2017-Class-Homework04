@@ -66,15 +66,20 @@
       $this->html .= htmlTags::horizontalRule ();
       $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Return the ASCII value of the first character of a string and print out the result: '));
       $this->html .= htmlTags::changeRow (stringFunctions::strASCII (stringFunctions::subString ($date,0,1)));
+      //7th
+      $this->html .= htmlTags::horizontalRule ();
+      $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Return the last two characters in $date and print out the result'));
+      $this->html .= htmlTags::changeRow (stringFunctions::subString ($date, stringFunctions::strLength ($date)-2,2));
     }
     public function __destruct () {
+      $this->html .= htmlTags::horizontalRule ();
       $this->html .= htmlTags::changeRow ('I\'m Done');
       stringFunctions::printThis ($this->html);
     }
   }
 
   class stringFunctions {
-    static public function printThis ($input1) {
+    static public function printThis ($input) {
       print($input);
     }
 
