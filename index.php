@@ -68,8 +68,19 @@
       $this->html .= htmlTags::changeRow (stringFunctions::strASCII (stringFunctions::subString ($date,0,1)));
       //7th
       $this->html .= htmlTags::horizontalRule ();
-      $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Return the last two characters in $date and print out the result'));
+      $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Return the last two characters in $date and print out the result: '));
       $this->html .= htmlTags::changeRow (stringFunctions::subString ($date, stringFunctions::strLength ($date)-2,2));
+      //8th
+      $this->html .= htmlTags::horizontalRule ();
+      $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Break $date into an array and set “separator” parameter as “/“ and print out the each array
+      element and delimit all elements with space: '));
+      $araryGet = stringFunctions::strExplode ('/', $date);
+      $arrayCount = arrayFunctions::countEle ($araryGet);
+      $this->html .= htmlTags::changeRow ($stringLength);
+      for ($i = 0; $i < $arrayCount; $i++) {
+        $this->html .= $araryGet[$i] . ' ';
+      }
+      $this->html .= htmlTags::changeRow ('');
     }
     public function __destruct () {
       $this->html .= htmlTags::horizontalRule ();
@@ -106,11 +117,19 @@
     static public function subString ($input, $input2, $input3) {
       return substr($input, $input2, $input3);
     }
+
+    static public function strExplode ($input, $input2) {
+      return explode($input, $input2);
+    }  
   }
 
   class arrayFunctions {
     static public function printThis ($input) {
       return print_r($input, true);
+    }
+
+    static public function countEle ($input) {
+      return count($input);
     }
   }
 
