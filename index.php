@@ -51,4 +51,7 @@ echo '<hr />Return the length of a string and print out the result: </br></br>';
 echo 'I would like to print the length of $date: ';
 print strlen($date);
 
+echo '<hr />Return the ASCII value of the first character of a string and print out the result: </br></br>';
+print ord(substr($date,0,1));
+
 ?>
