@@ -7,7 +7,7 @@
     private $html;
 
     public function __construct () {
-      $date =  date('Y-m-d', time());
+      $date = normalFunctions::getDates ('Y-m-d', time());
       $this->html .= htmlTags::changeRow ("The value of \$date: " . $date);
 
       $tar = "2017/05/24";
@@ -81,11 +81,57 @@
         $this->html .= $araryGet[$i] . ' ';
       }
       $this->html .= htmlTags::changeRow ('');
+      //9th
+      $this->html .= htmlTags::horizontalRule ();
+      $this->html .= htmlTags::changeRow(htmlTags::changeRow (htmlTags::changeRow ('Loop through the array $year and you need to identify whether each year is
+      a leap year. If it is, print out “True”, otherwise, print out “False”.') . htmlTags::changeRow ('A. You need to use two methods to loop through the
+      array, which means you need to use two different statement structures to finish this job. The first one must be foreach and the second one could be for 
+      or while or do…while.') . htmlTags::changeRow ('B. You need to use switch statement to identify whether a year is a leap year.') . htmlTags::changeRow
+      ('C. You need to delimit each result with space in one line.')));
+      //method 1st
+      $this->html .= htmlTags::changeRow ('The foreach method: ');
+      foreach ($year as $number) {
+        switch ($number%4) {
+          case 0;
+	    if (($number%100) != 0 || ($number%400) == 0) {
+	      $this->html .= 'true' . ' ';
+	    } else {
+	      $this->html .= 'false' . ' ';
+	    }
+	    break;
+	  default;
+	    $this->html .= 'false' . ' ';
+        }
+      }
+      $this->html .= htmlTags::changeRow ('');
+      //method 2nd
+      $this->html .= htmlTags::changeRow ('The for method: ');
+      $arrayCount = arrayFunctions::countEle ($year);
+      for ($i = 0; $i < $arrayCount; $i++) {
+        switch ($year[$i]%4) {
+          case 0;
+	    if (($year[$i]%100) != 0 || ($year[$i]%400) == 0) {
+	      $this->html .= 'true' . ' ';
+	    } else {
+	      $this->html .= 'false' . ' ';
+	    }
+	    break;
+	  default;
+	    $this->html .= 'false' . ' ';
+        }
+      }
+      $this->html .= htmlTags::changeRow ('');
     }
     public function __destruct () {
       $this->html .= htmlTags::horizontalRule ();
       $this->html .= htmlTags::changeRow ('I\'m Done');
       stringFunctions::printThis ($this->html);
+    }
+  }
+
+  class normalFunctions {
+    static public function getDates ($input, $input2) {
+      return date($input, $input2);
     }
   }
 
