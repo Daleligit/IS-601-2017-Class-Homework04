@@ -26,13 +26,14 @@
       $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Compare $date with $tar and then if the result is greater than 0, you should print out “the
       future”; if the result is less than 0, you should print out “the past”; if the result is equal to 0,you should print out “Oops”. You must use if-elseif
       statement in this question: '));
-      //if (($date <=> $tar) > 0 ) {
-      //  echo 'the future</br>';
-      //} elseif (($date < $tar) < 0) {
-      //  echo 'the past</br>';
-      //} else {
-      //  echo 'Oops</br>';
-      //}
+      $compareRsl = stringFunctions::strCompare ($date, $tar);
+      if ($compareRsl > 0) {
+        $this->html .= htmlTags::changeRow ('the future');
+      } elseif ($compareRsl < 0) {
+        $this->html .= htmlTags::changeRow ('the past');
+      } else {
+        $this->html .= htmlTags::changeRow ('Oops');
+      }
       //3rd
       $this->html .= htmlTags::horizontalRule ();
       $this->html .= htmlTags::changeRow (htmlTags::changeRow ('Search for “/“ in $date and print out all positions. If there are more than one position,
@@ -166,7 +167,11 @@
 
     static public function strExplode ($input, $input2) {
       return explode($input, $input2);
-    }  
+    }
+
+    static public function strCompare ($input, $input2) {
+      return strcmp($input, $input2);
+    }
   }
 
   class arrayFunctions {
